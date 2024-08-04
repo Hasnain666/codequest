@@ -1,0 +1,92 @@
+.navBar {
+  background-color: #141414;
+  padding: 0.5rem 2rem;
+}
+
+.navDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navBar-Brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 150px;
+  width: 180px;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-object a {
+  color: #befd73;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-object a:hover {
+  color: #9eda4d;
+}
+
+.nav-object-prof {
+  display: flex;
+  align-items: center;
+}
+
+.register-icon {
+  color: #befd73;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.register-icon:hover {
+  color: #9eda4d;
+}
+
+@keyframes dropTop {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.register-icon {
+  animation: dropTop 0.3s linear;
+}
+.logo {
+  height: 180px;
+  width: 200px;
+  object-fit: contain;
+  margin-top: -20px; /* Adjust this value as needed */
+}
+.nav-object button {
+  background: none;
+  border: none;
+  color: #befd73;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-object button:hover {
+  color: #9eda4d;
+}

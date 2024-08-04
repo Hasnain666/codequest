@@ -1,0 +1,136 @@
+body {
+  background-color: #141414;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  color: #ffffff;
+}
+
+.landing-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.hero {
+  text-align: center;
+  padding: 4rem 0;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #befd73;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  background-color: #befd73;
+  color: #141414;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #9eda4d;
+}
+
+.features,
+.about,
+.testimonials {
+  margin-bottom: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #befd73;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.feature-grid,
+.testimonial-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card,
+.testimonial-card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #1e1e1e;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.feature-card i {
+  font-size: 2rem;
+  color: #befd73;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-size: 1.2rem;
+  color: #befd73;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p,
+.testimonial-card p {
+  color: #ffffff;
+}
+
+.about p {
+  font-size: 1.1rem;
+  color: #ffffff;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.testimonial-card h4 {
+  color: #befd73;
+  margin-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .feature-grid,
+  .testimonial-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.feature-icon {
+  font-size: 2.5rem;
+  color: #befd73;
+  margin-bottom: 1rem;
+}

@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Navbar } from "./Navbar/Navbar";
+import Body from "./Body/Body";
+import Register from "./GetStarted/Register";
 
 function App() {
+  const [showRegister, setShowRegister] = useState(false);
+
+  const handleToggleRegister = () => {
+    setShowRegister((prev) => !prev);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Navbar onRegisterClick={handleToggleRegister} />
+      <div className="max-w-7xl mx-auto pt-20 px-6">
+        <Routes>
+          <Route path="/" element={<Body />} />
+          {/* Add other routes here */}
+        </Routes>
+      </div>
+      {showRegister && <Register onClose={() => setShowRegister(false)} />}
+    </BrowserRouter>
   );
 }
 
 export default App;
+/* <BrowserRouter>
+<div className="App">
+<Navbar />
+<main>
+  
+</main>
+</div>
+</BrowserRouter>
+*/

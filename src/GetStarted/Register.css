@@ -1,0 +1,61 @@
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.popup-enter {
+  animation: fadeIn 0.3s ease-out forwards;
+}
+
+.popup-exit {
+  animation: fadeOut 0.1s ease-in forwards;
+}
+
+.bg-141414 {
+  background-color: #141414;
+}
+
+.bg-1e1e1e {
+  background-color: #1e1e1e;
+}
+
+.text-befd73 {
+  color: #befd73;
+}
+
+.border-befd73 {
+  border-color: #befd73;
+}
+
+.bg-befd73 {
+  background-color: #befd73;
+}
+
+.hover\:bg-9eda4d:hover {
+  background-color: #9eda4d;
+}
+
+.hover\:text-9eda4d:hover {
+  color: #9eda4d;
+}
+
+.focus\:border-9eda4d:focus {
+  border-color: #9eda4d;
+}
