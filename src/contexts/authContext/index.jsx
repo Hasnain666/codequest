@@ -1,33 +1,36 @@
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "../../../firebase_config";
-import { useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../firebase_config";
 
-const AuthContext = React.createContext();
-export function useAuth() {
-  return useContext(AuthContext);
-}
-export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
-  const [loading, setLoading] = useState(true);
+const AuthContext = createContext();
+
+export const useAuth = () => useContext(AuthContext);
+
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, initializeUser);
-    return unSubscribe;
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+
+    return () => unsubscribe();
   }, []);
-  async function initializeUser(user) {
-    if (user) {
-      setCurrentUser({ ...user });
-      setUserLoggedIn(true);
-    } else {
-      setCurrentUser(null);
-      setUserLoggedIn(false);
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      // No need to setUser(null) here as onAuthStateChanged will handle this
+    } catch (error) {
+      console.error("Failed to log out:", error);
     }
-    setLoading(false);
-  }
-  const value = { currentUser, userLoggedIn, loading };
-  return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
-  );
-}
+  };
+
+  const value = {
+    user,
+    setUser,
+    logout: handleLogout,
+  };
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+};

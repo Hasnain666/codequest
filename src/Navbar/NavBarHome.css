@@ -1,0 +1,140 @@
+.navBar {
+  background-color: #141414;
+  padding: 0.5rem 2rem;
+}
+
+.navDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.navBar-Brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 150px;
+  width: 180px;
+  object-fit: contain;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-object a {
+  color: #befd73;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-object a:hover {
+  color: #9eda4d;
+}
+
+.nav-object-prof {
+  display: flex;
+  align-items: center;
+}
+
+.profile-container {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #befd73;
+  color: #141414;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.profile-container:hover {
+  background-color: #9eda4d;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 50px; /* Adjust depending on your layout */
+  right: 0;
+  background-color: #141414;
+  border: 1px solid #befd73;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  z-index: 1000;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  color: #befd73;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.dropdown-item:hover {
+  color: #9eda4d;
+}
+
+.profile-letter {
+  font-weight: bold;
+}
+
+.register-icon {
+  color: #befd73;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.register-icon:hover {
+  color: #9eda4d;
+}
+
+@keyframes dropTop {
+  0% {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.logo {
+  height: 180px;
+  width: 200px;
+  object-fit: contain;
+  margin-top: -20px; /* Adjust this value as needed */
+}
+
+.nav-object button {
+  background: none;
+  border: none;
+  color: #befd73;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.nav-object button:hover {
+  color: #9eda4d;
+}
