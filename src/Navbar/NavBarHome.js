@@ -35,10 +35,16 @@ export const NavbarHome = ({ onRegisterClick, onLogout }) => {
         </Link>
         <ul className="nav-links">
           <li className="nav-object">
-            <Link to="/">Home</Link>
+            <Link to="/">Explore</Link>
           </li>
           <li className="nav-object">
-            <button onClick={onRegisterClick}>Get Started</button>
+            <button onClick={onRegisterClick}>Code</button>
+          </li>
+          <li className="nav-object">
+            <button onClick={onRegisterClick}>Forum</button>
+          </li>
+          <li className="nav-object">
+            <button onClick={onRegisterClick}>About Us</button>
           </li>
           <li className="nav-object-prof">
             <div className="profile-container" onClick={handleToggleDropdown}>

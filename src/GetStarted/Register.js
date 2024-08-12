@@ -57,7 +57,7 @@ const Register = ({ onClose, onLoginClick, onSuccess }) => {
       try {
         await doCreateUserWithEmailAndPassword(email, password);
         onSuccess();
-        alert("Account created successfully");
+        handleClose();
       } catch (err) {
         setError(
           err.message || "Failed to create an account. Please try again."
@@ -76,6 +76,7 @@ const Register = ({ onClose, onLoginClick, onSuccess }) => {
       try {
         await doSignInWithGoogle();
         onSuccess();
+        handleClose();
       } catch (err) {
         setError(
           err.message || "Failed to sign in with Google. Please try again."
