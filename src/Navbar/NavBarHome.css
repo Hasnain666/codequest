@@ -138,3 +138,43 @@
 .nav-object button:hover {
   color: #9eda4d;
 }
+.nav-object.active a,
+.nav-object.active button {
+  color: #9eda4d;
+  position: relative;
+}
+
+.nav-object.active a::after,
+.nav-object.active button::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #9eda4d;
+  animation: underlineGrow 0.3s ease-out forwards;
+}
+
+@keyframes underlineGrow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.page-transition-enter {
+  opacity: 0;
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+.page-transition-exit {
+  opacity: 1;
+}
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}

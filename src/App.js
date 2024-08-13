@@ -5,13 +5,18 @@ import {
   Routes,
   useNavigate,
   Navigate,
+  useLocation,
 } from "react-router-dom";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 import { Navbar } from "./Navbar/Navbar";
 import { NavbarHome } from "./Navbar/NavBarHome";
 import Body from "./Body/Body";
 import Register from "./GetStarted/Register";
 import Home from "../src/GetStarted/Home";
 import Login from "./GetStarted/Login";
+import Code from "./GetStarted/Code";
+import Forum from "./GetStarted/Forum";
+import About from "./GetStarted/About";
 import { AuthProvider, useAuth } from "./contexts/authContext/index";
 
 function App() {
@@ -29,6 +34,7 @@ function AppContent() {
   const [showLogin, setShowLogin] = useState(false);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleToggleRegister = () => {
     setShowRegister((prev) => !prev);
@@ -54,10 +60,7 @@ function AppContent() {
   return (
     <>
       {user ? (
-        <NavbarHome
-          onRegisterClick={handleToggleRegister}
-          onLogout={handleLogout}
-        />
+        <NavbarHome onLogout={handleLogout} />
       ) : (
         <Navbar
           onRegisterClick={handleToggleRegister}
@@ -65,11 +68,37 @@ function AppContent() {
         />
       )}
       <div className="max-w-7xl mx-auto pt-20 px-6">
-        <Routes>
-          <Route path="/" element={user ? <Navigate to="/home" /> : <Body />} />
-          <Route path="/home" element={user ? <Home /> : <Navigate to="/" />} />
-          {/* Add other routes here */}
-        </Routes>
+        <TransitionGroup>
+          <CSSTransition
+            key={location.pathname}
+            classNames="page-transition"
+            timeout={300}
+          >
+            <Routes location={location}>
+              <Route
+                path="/"
+                element={user ? <Navigate to="/home" /> : <Body />}
+              />
+              <Route
+                path="/home"
+                element={user ? <Home /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/code"
+                element={user ? <Code /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/forum"
+                element={user ? <Forum /> : <Navigate to="/" />}
+              />
+              <Route
+                path="/about"
+                element={user ? <About /> : <Navigate to="/" />}
+              />
+              {/* Add other routes here */}
+            </Routes>
+          </CSSTransition>
+        </TransitionGroup>
       </div>
       {showRegister && (
         <RegisterWrapper
@@ -87,7 +116,6 @@ function AppContent() {
   );
 }
 
-// Wrapper component to handle navigation in Register
 function RegisterWrapper({ onClose, onLoginClick }) {
   const navigate = useNavigate();
   return (

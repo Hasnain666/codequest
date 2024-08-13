@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import "../GetStarted/Register.css";
 import { doCreateUserWithEmailAndPassword, doSignInWithGoogle } from "../auth";
+import { FcGoogle } from "react-icons/fc";
 // import { useAuth } from "../contexts/authContext/index"; // Removed as it's not used
 
 const Register = ({ onClose, onLoginClick, onSuccess }) => {
@@ -147,7 +148,6 @@ const Register = ({ onClose, onLoginClick, onSuccess }) => {
           disabled={isSigningIn} // Disable while signing in
         >
           {isSigningIn ? "Signing in..." : "Sign in with Google"}{" "}
-          {/* Show progress */}
         </button>
         <p className="mt-4 text-center text-white">
           Already have an account?
