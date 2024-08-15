@@ -1,0 +1,9 @@
+.code-container {
+  padding: 20px;
+  min-height: 100vh;
+}
+
+.code-container h1 {
+  color: #333;
+  margin-bottom: 20px;
+}

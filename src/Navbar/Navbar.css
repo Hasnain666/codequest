@@ -1,9 +1,10 @@
-.navBar {
+.navBarLand {
   background-color: #141414;
   padding: 0.5rem 2rem;
+  margin-bottom: -110px;
 }
 
-.navDiv {
+.navDivLand {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,7 +12,7 @@
   margin: 0 auto;
 }
 
-.navBar-Brand {
+.navBar-BrandLand {
   display: flex;
   align-items: center;
 }
@@ -20,6 +21,7 @@
   height: 150px;
   width: 180px;
   object-fit: contain;
+  margin-top: -20px;
 }
 
 .nav-links {

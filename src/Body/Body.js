@@ -48,7 +48,7 @@ const Body = () => {
           Discover the best courses from around the web to help you master
           computer science skills. Practice coding seamlessly with our
           integrated editor, and join a vibrant community where you can connect,
-          share resources, and grow together
+          share resources, and grow together.
         </p>
       </section>
 
@@ -57,7 +57,7 @@ const Body = () => {
         <div className="testimonial-grid">
           <div className="testimonial-card">
             <p>
-              "This platform will revolutionise the way i learn computer
+              "This platform will revolutionize the way I learn computer
               science. Highly recommended!"
             </p>
             <h4>John Doe</h4>

@@ -8,8 +8,8 @@ import {
   addDoc,
   serverTimestamp,
 } from "firebase/firestore";
-import { db, auth } from "../firebase_config"; // Adjust the import path as needed
-import { useAuth } from "../contexts/authContext/index"; // Adjust the import path as needed
+import { db, auth } from "../firebase_config";
+import { useAuth } from "../contexts/authContext/index";
 import "../GetStarted/Forum.css";
 
 function Forum() {
@@ -17,6 +17,7 @@ function Forum() {
   const [newMessage, setNewMessage] = useState("");
   const messagesEndRef = useRef(null);
   const { user } = useAuth();
+  const messagesContainerRef = useRef(null);
 
   useEffect(() => {
     const q = query(
@@ -37,7 +38,10 @@ function Forum() {
   }, []);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    if (messagesContainerRef.current) {
+      messagesContainerRef.current.scrollTop =
+        messagesContainerRef.current.scrollHeight;
+    }
   }, [messages]);
 
   const handleSubmit = async (e) => {
@@ -49,7 +53,7 @@ function Forum() {
         text: newMessage,
         createdAt: serverTimestamp(),
         userId: user.uid,
-        displayName: user.email || "Anonymous", // Fallback to 'Anonymous' if email is not available
+        displayName: user.email || "Anonymous",
         photoURL: user.photoURL || "",
         chatRoomId: "general",
         isRead: false,
@@ -64,7 +68,7 @@ function Forum() {
 
   return (
     <div className="chat-room">
-      <div className="messages">
+      <div className="messages" ref={messagesContainerRef}>
         {messages.map((msg) => (
           <div
             key={msg.id}

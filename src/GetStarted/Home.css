@@ -1,7 +1,52 @@
+.home-container {
+  padding-top: 100px; /* Reduce this value */
+  background-color: #141414;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.search-and-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.search-input {
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: 1px solid #befd73;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.search-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(190, 253, 115, 0.5);
+}
+
+.hero {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  margin-top: 5rem;
+}
+
 .learn-android-page {
   color: #befd73;
   padding: 20px;
   margin-top: -100px;
+  background-color: #141414;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .page-title {
@@ -9,6 +54,38 @@
   font-size: 2.5rem;
   color: #befd73;
   margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #befd73;
+  margin-bottom: 1rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-button {
+  background-color: #befd73;
+  color: #141414;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.cta-button:hover {
+  background-color: #9eda4d;
+  transform: translateY(-2px);
 }
 
 .filter-categories {
@@ -26,12 +103,14 @@
   color: #befd73;
   border-radius: 20px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
 }
 
 .filter-btn.active,
 .filter-btn:hover {
-  background-color: #9eda4d;
+  background-color: #9eda4d; /* Ensuring the background provides enough contrast */
+  color: #141414; /* Darker text color for improved visibility on light background */
+  transform: translateY(-2px);
 }
 
 .card-container {
@@ -95,6 +174,7 @@
 
 .difficulty-badge.senior {
   background-color: #e03e3e;
+  color: #ffffff;
 }
 
 .visit-link {
@@ -105,9 +185,10 @@
   border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .visit-link:hover {
   background-color: #9eda4d;
+  transform: translateY(-2px);
 }

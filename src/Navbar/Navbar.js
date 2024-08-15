@@ -7,9 +7,9 @@ import { IconContext } from "react-icons";
 
 export const Navbar = ({ onRegisterClick }) => {
   return (
-    <nav className="navBar">
-      <div className="navDiv">
-        <Link className="navBar-Brand" to="/">
+    <nav className="navBarLand">
+      <div className="navDivLand">
+        <Link className="navBar-BrandLand" to="/">
           <img
             src={Logo}
             width="180"

@@ -15,9 +15,11 @@ import Register from "./GetStarted/Register";
 import Home from "../src/GetStarted/Home";
 import Login from "./GetStarted/Login";
 import Code from "./GetStarted/Code";
+import "./GetStarted/ScrollToTop";
 import Forum from "./GetStarted/Forum";
 import About from "./GetStarted/About";
 import { AuthProvider, useAuth } from "./contexts/authContext/index";
+import ScrollToTop from "./GetStarted/ScrollToTop";
 
 function App() {
   return (
@@ -59,6 +61,7 @@ function AppContent() {
 
   return (
     <>
+      <ScrollToTop />
       {user ? (
         <NavbarHome onLogout={handleLogout} />
       ) : (
@@ -67,7 +70,7 @@ function AppContent() {
           onLoginClick={handleToggleLogin}
         />
       )}
-      <div className="max-w-7xl mx-auto pt-20 px-6">
+      <div className="main-content">
         <TransitionGroup>
           <CSSTransition
             key={location.pathname}

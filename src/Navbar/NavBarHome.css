@@ -1,4 +1,10 @@
 .navBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-bottom: -110px;
   background-color: #141414;
   padding: 0.5rem 2rem;
 }
@@ -9,6 +15,7 @@
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  max-height: 120px;
 }
 
 .navBar-Brand {
@@ -20,6 +27,7 @@
   height: 150px;
   width: 180px;
   object-fit: contain;
+  margin-top: -20px;
 }
 
 .nav-links {
@@ -116,13 +124,6 @@
     transform: translateY(0);
     opacity: 1;
   }
-}
-
-.logo {
-  height: 180px;
-  width: 200px;
-  object-fit: contain;
-  margin-top: -20px; /* Adjust this value as needed */
 }
 
 .nav-object button {
