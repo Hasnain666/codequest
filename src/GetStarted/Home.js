@@ -2,11 +2,17 @@ import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase_config";
 import "../GetStarted/Home.css";
+import discoverImage from "./exploring.jpg";
+import codeImage from "./code.jpg";
+import collaborateImage from "./collaborate.jpg";
 
 const Home = () => {
   const [resources, setResources] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
+  const [displayedResources, setDisplayedResources] = useState(4); // Start with 4 resources
+  const resourcesPerPage = 4; // Number of resources to load on scroll
+  const [currentSlide, setCurrentSlide] = useState(0); //slides
 
   useEffect(() => {
     const fetchResources = async () => {
@@ -20,14 +26,57 @@ const Home = () => {
 
     fetchResources();
   }, []);
+  const slides = [
+    {
+      image: discoverImage,
+      caption: "Discover top Android development resources.",
+    },
+    { image: codeImage, caption: "Practice coding in our integrated editor." },
+    {
+      image: collaborateImage,
+      caption: "Collaborate and share in the community forum.",
+    },
+  ];
 
+  // Load more resources when the user scrolls to the bottom of the page
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition =
+        window.innerHeight + window.scrollY >= document.body.offsetHeight - 200;
+      if (scrollPosition) {
+        setDisplayedResources((prev) =>
+          Math.min(prev + resourcesPerPage, resources.length)
+        );
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [resources]);
+
+  // Search and filter resources
   const filterResources = () => {
-    if (selectedCategory === "All") {
-      return resources;
-    }
-    return resources.filter(
-      (resource) => resource.category === selectedCategory
-    );
+    return resources
+      .slice(0, displayedResources) // Only filter the displayed resources
+      .filter((resource) => {
+        const matchesCategory =
+          selectedCategory === "All" || resource.category === selectedCategory;
+        const matchesSearch = searchTerm
+          .toLowerCase()
+          .split(" ")
+          .every(
+            (term) =>
+              resource.title.toLowerCase().includes(term) ||
+              resource.description.toLowerCase().includes(term) ||
+              resource.category.toLowerCase().includes(term) ||
+              (resource.cost && resource.cost.toLowerCase().includes(term)) ||
+              (resource.difficulty &&
+                resource.difficulty.toLowerCase().includes(term))
+          );
+        return matchesCategory && matchesSearch;
+      });
   };
 
   const uniqueCategories = [
@@ -39,12 +88,30 @@ const Home = () => {
     <div className="home-container">
       <div className="content">
         <section className="hero">
-          <h1>Let's Learn Mobile Development</h1>
-          <p>
-            Discover top courses and sort through filters of your choice, use
-            the code editor to practice and join channels to build community!
-          </p>
-          <button className="cta-button">Get Started</button>
+          <div className="slider-container">
+            {slides.map((slide, index) => (
+              <div
+                key={index}
+                className={`slide ${index === currentSlide ? "active" : ""}`}
+                style={{ backgroundImage: `url(${slide.image})` }}
+              >
+                <div className="slide-content">
+                  <p className="slide-caption">{slide.caption}</p>
+                </div>
+              </div>
+            ))}
+            <div className="slider-nav">
+              {slides.map((_, index) => (
+                <button
+                  key={index}
+                  className={`slider-nav-btn ${
+                    index === currentSlide ? "active" : ""
+                  }`}
+                  onClick={() => setCurrentSlide(index)}
+                ></button>
+              ))}
+            </div>
+          </div>
         </section>
         <div className="search-and-filter">
           <input
@@ -75,9 +142,9 @@ const Home = () => {
             <div className="resource-card" key={resource.id}>
               <h3 className="card-title">{resource.title}</h3>
               <p className="card-description">
-                {resource.description.length > 100
+                {resource.description && resource.description.length > 100
                   ? `${resource.description.slice(0, 100)}...`
-                  : resource.description}
+                  : resource.description || "No description available"}
               </p>
               <div className="card-details">
                 {resource.category && (

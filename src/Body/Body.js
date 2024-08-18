@@ -5,34 +5,34 @@ import { HiCode, HiChat } from "react-icons/hi";
 
 const Body = () => {
   return (
-    <div className="landing-page">
-      <section className="hero">
+    <div className="landing-page-container">
+      <section className="landing-hero">
         <h1>Welcome to CodeQuest!</h1>
         <p>
           "Discover top courses, practice coding, and connect with a thriving
           community - all in one place!"
         </p>
-        <button className="cta-button">Get Started</button>
+        <button className="landing-cta-button">Get Started</button>
       </section>
 
-      <section className="features">
+      <section className="landing-features">
         <h2>Our Features</h2>
-        <div className="feature-grid">
-          <div className="feature-card">
-            <MdSchool className="feature-icon" aria-hidden="true" />
+        <div className="landing-feature-grid">
+          <div className="landing-feature-card">
+            <MdSchool className="landing-feature-icon" aria-hidden="true" />
             <h3>Discover top courses</h3>
             <p>
               Discover top courses to enhance your skills and achieve your goals
               - 90% are free
             </p>
           </div>
-          <div className="feature-card">
-            <HiCode className="feature-icon" aria-hidden="true" />
+          <div className="landing-feature-card">
+            <HiCode className="landing-feature-icon" aria-hidden="true" />
             <h3>Code Editor</h3>
             <p>Practice coding effortlessly with our integrated code editor</p>
           </div>
-          <div className="feature-card">
-            <HiChat className="feature-icon" aria-hidden="true" />
+          <div className="landing-feature-card">
+            <HiChat className="landing-feature-icon" aria-hidden="true" />
             <h3>Build community</h3>
             <p>
               Connect with peers, share knowledge, and grow together in our
@@ -42,7 +42,7 @@ const Body = () => {
         </div>
       </section>
 
-      <section className="about">
+      <section className="landing-about">
         <h2>What We Offer</h2>
         <p>
           Discover the best courses from around the web to help you master
@@ -52,17 +52,17 @@ const Body = () => {
         </p>
       </section>
 
-      <section className="testimonials">
+      <section className="landing-testimonials">
         <h2>Reviews</h2>
-        <div className="testimonial-grid">
-          <div className="testimonial-card">
+        <div className="landing-testimonial-grid">
+          <div className="landing-testimonial-card">
             <p>
               "This platform will revolutionize the way I learn computer
               science. Highly recommended!"
             </p>
             <h4>John Doe</h4>
           </div>
-          <div className="testimonial-card">
+          <div className="landing-testimonial-card">
             <p>
               "The ease of use and powerful features make this a must-have
               tool."
