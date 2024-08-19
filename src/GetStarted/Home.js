@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { collection, getDocs } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  doc,
+  updateDoc,
+  increment,
+} from "firebase/firestore";
 import { db } from "../firebase_config";
 import "../GetStarted/Home.css";
 import discoverImage from "./exploring.jpg";
@@ -37,6 +43,19 @@ const Home = () => {
       caption: "Collaborate and share in the community forum.",
     },
   ];
+  const handleLike = async (resourceId) => {
+    const resourceRef = doc(db, "resources", resourceId);
+    await updateDoc(resourceRef, {
+      likes: increment(1),
+    });
+  };
+
+  const handleDislike = async (resourceId) => {
+    const resourceRef = doc(db, "resources", resourceId);
+    await updateDoc(resourceRef, {
+      dislikes: increment(1),
+    });
+  };
 
   // Load more resources when the user scrolls to the bottom of the page
   useEffect(() => {
@@ -166,6 +185,20 @@ const Home = () => {
               >
                 Visit Link
               </a>
+              <div className="card-actions">
+                <button
+                  onClick={() => handleLike(resource.id)}
+                  className="like-button"
+                >
+                  👍 {resource.likes || 0}
+                </button>
+                <button
+                  onClick={() => handleDislike(resource.id)}
+                  className="dislike-button"
+                >
+                  👎 {resource.dislikes || 0}
+                </button>
+              </div>
             </div>
           ))}
         </div>
