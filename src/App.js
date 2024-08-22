@@ -98,7 +98,6 @@ function AppContent() {
                 path="/about"
                 element={user ? <About /> : <Navigate to="/" />}
               />
-              {/* Add other routes here */}
             </Routes>
           </CSSTransition>
         </TransitionGroup>
@@ -118,7 +117,7 @@ function AppContent() {
     </>
   );
 }
-
+//Wrapper component to handle registration
 function RegisterWrapper({ onClose, onLoginClick }) {
   const navigate = useNavigate();
   return (

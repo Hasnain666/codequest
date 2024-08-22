@@ -3,7 +3,6 @@ import { X } from "lucide-react";
 import "../GetStarted/Register.css";
 import { doCreateUserWithEmailAndPassword, doSignInWithGoogle } from "../auth";
 import { FcGoogle } from "react-icons/fc";
-// import { useAuth } from "../contexts/authContext/index"; // Removed as it's not used
 
 const Register = ({ onClose, onLoginClick, onSuccess }) => {
   const [isSigningIn, setSigningIn] = useState(false);

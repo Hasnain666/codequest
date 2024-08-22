@@ -205,7 +205,7 @@
 
 .filter-btn.active,
 .filter-btn:hover {
-  background-color: #9eda4d; /* Ensuring the background provides enough contrast */
+  background-color: #9eda4d;
   color: #141414; /* Darker text color for improved visibility on light background */
   transform: translateY(-2px);
 }
