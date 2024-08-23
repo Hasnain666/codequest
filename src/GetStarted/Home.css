@@ -1,5 +1,6 @@
 .home-container {
-  padding-top: 100px; /* Reduce this value */
+  /*padding-top: 100px;  Reduce this value */
+  margin-top: -60px;
   background-color: #141414;
   min-height: 100vh;
   box-sizing: border-box;

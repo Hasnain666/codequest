@@ -42,7 +42,7 @@
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  padding: 41px;
   height: calc(100vh - 40px);
   background-color: #141414;
   color: #befd73;
@@ -115,6 +115,7 @@
   margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid #2c2c2c;
+  margin-bottom: 52px;
 }
 
 .chat-room input {
