@@ -16,15 +16,20 @@ import { db, auth } from "../firebase_config";
 import { useAuth } from "../contexts/authContext/index";
 import "../GetStarted/Forum.css";
 import ChannelList from "./ChannelList";
+import { Filter } from "bad-words";
 
 function Forum() {
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
   const [currentChannel, setCurrentChannel] = useState("");
   const [currentChannelName, setCurrentChannelName] = useState("");
+  const [lastMessageTime, setLastMessageTime] = useState(0);
   const messagesEndRef = useRef(null);
   const { user } = useAuth();
   const messagesContainerRef = useRef(null);
+  const filter = new Filter();
+
+  const MESSAGE_COOLDOWN = 3000; // 3 seconds timeout
 
   useEffect(() => {
     if (currentChannel) {
@@ -53,9 +58,23 @@ function Forum() {
     e.preventDefault();
     if (newMessage.trim() === "" || !currentChannel) return;
 
+    // Limit the rate of messages sent
+    const now = Date.now();
+    if (now - lastMessageTime < MESSAGE_COOLDOWN) {
+      alert("Please wait a few seconds before sending another message.");
+      return;
+    }
+
+    // Implementing a filter for bad words.
+    const cleanMessage = filter.clean(newMessage);
+    if (cleanMessage !== newMessage) {
+      alert("Your message contains inappropriate language and was not sent.");
+      return;
+    }
+
     try {
       const messageData = {
-        text: newMessage,
+        text: cleanMessage,
         createdAt: new Date().toISOString(),
         userId: user.uid,
         displayName: user.email || "Anonymous",
@@ -73,7 +92,10 @@ function Forum() {
       });
 
       setNewMessage("");
-    } catch (error) {}
+      setLastMessageTime(now);
+    } catch (error) {
+      console.error("Error sending message:", error);
+    }
   };
 
   const handleChannelSelect = async (channelId) => {
